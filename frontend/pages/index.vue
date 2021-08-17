@@ -8,6 +8,30 @@
         <button class="task-form-button" @click="addTask()">追加</button>
       </div>
       <h3 class="task-heading-sub">タスク一覧</h3>
+      <table class="task-table">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <th>タスク</th>
+            <th>状態</th>
+          </tr>
+          <tr>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+          </tr>
+          <tr>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+          </tr>
+          <tr>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+            <td>XXXXX</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -61,7 +85,7 @@ export default {
   &-form {
     &-input {
       box-sizing: border-box;
-      max-width: 150px;
+      max-width: 200px;
       height: 27px;
       margin: 4px 0;
       font-size: 16px;
@@ -95,6 +119,29 @@ export default {
         color: #fff;
         background: #00b5ad;
       }
+    }
+  }
+  &-table {
+    width: 80%;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+
+    & th {
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 2px solid #0099e3;
+      background: #cee7ff;
+    }
+
+    & td {
+      padding: 5px;
+      border-top: 1px solid #ccc;
+      border-right: 1px solid #ccc;
     }
   }
 }
