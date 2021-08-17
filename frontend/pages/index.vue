@@ -77,8 +77,9 @@ export default {
     border-bottom: 3px solid #ccc;
   }
   &-heading-sub {
+    width: 100%;
     margin: 30px 0;
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     color: #333;
     background: #eee;
   }
