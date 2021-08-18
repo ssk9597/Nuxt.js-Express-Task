@@ -4,11 +4,7 @@ volumes:
   db-data:
 
 networks:
-  default:
-    external:
-      name: bridge
   container-link:
-    name: docker.internal
 
 services:
   # MySQL

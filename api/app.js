@@ -17,6 +17,4 @@ const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
 // start_the_server
-app.listen(PORT, function () {
-  console.log(`http://localhost:${PORT}`);
-});
+app.listen(PORT);
