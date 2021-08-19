@@ -10,6 +10,10 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+// bodyParser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // routing_file
 const indexRouter = require('./routes/index');
 

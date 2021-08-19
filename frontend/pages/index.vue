@@ -4,7 +4,7 @@
       <h2 class="task-heading-ttl">Task App</h2>
       <h3 class="task-heading-sub">タスク追加</h3>
       <div class="task-form-container">
-        <input type="text" class="task-form-input" placeholder="タスク" v-model="task" />
+        <input type="text" class="task-form-input" placeholder="タスク" v-model="content" />
         <button class="task-form-button" @click="addTask()">追加</button>
       </div>
       <h3 class="task-heading-sub">タスク一覧</h3>
@@ -39,14 +39,16 @@ export default {
   },
   data() {
     return {
-      task: '',
+      content: '',
       tasks: '',
     };
   },
   methods: {
-    addTask() {
-      console.log(this.task);
-      this.task = '';
+    async addTask() {
+      await this.$axios.$post('/api/tasks/store', {
+        content: this.content,
+        status: false,
+      });
     },
   },
 };
