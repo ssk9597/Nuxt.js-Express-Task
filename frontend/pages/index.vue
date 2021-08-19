@@ -9,26 +9,19 @@
       </div>
       <h3 class="task-heading-sub">タスク一覧</h3>
       <table class="task-table">
-        <tbody>
+        <thead>
           <tr>
             <th>ID</th>
             <th>タスク</th>
             <th>状態</th>
           </tr>
-          <tr>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
-          </tr>
-          <tr>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
-          </tr>
-          <tr>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
-            <td>XXXXX</td>
+        </thead>
+        <tbody>
+          <tr v-for="(task, index) in tasks" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ task.content }}</td>
+            <td v-if="task.status">完了</td>
+            <td v-else>作業中</td>
           </tr>
         </tbody>
       </table>
@@ -38,9 +31,16 @@
 
 <script>
 export default {
+  async asyncData({ $axios }) {
+    const tasks = await $axios.$get('/api/tasks');
+    return {
+      tasks,
+    };
+  },
   data() {
     return {
       task: '',
+      tasks: '',
     };
   },
   methods: {
