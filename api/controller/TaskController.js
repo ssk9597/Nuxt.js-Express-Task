@@ -15,6 +15,13 @@ const taskController = {
       status: status,
     });
   },
+
+  async delete(req, res) {
+    const id = req.body.id;
+    await db.Task.destroy({
+      where: { id: id },
+    });
+  },
 };
 
 module.exports = taskController;

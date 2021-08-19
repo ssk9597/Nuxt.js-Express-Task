@@ -14,6 +14,7 @@
             <th>ID</th>
             <th>タスク</th>
             <th>状態</th>
+            <th>削除</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +23,9 @@
             <td>{{ task.content }}</td>
             <td v-if="task.status">完了</td>
             <td v-else>作業中</td>
+            <td>
+              <button @click="deleteTask(task.id)">削除</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -49,6 +53,13 @@ export default {
         content: this.content,
         status: false,
       });
+      window.location.href = 'http://localhost:3000';
+    },
+    async deleteTask(id) {
+      await this.$axios.$post('/api/tasks/delete', {
+        id,
+      });
+      window.location.href = 'http://localhost:3000';
     },
   },
 };
