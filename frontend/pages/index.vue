@@ -21,10 +21,18 @@
           <tr v-for="(task, index) in tasks" :key="index">
             <td>{{ index + 1 }}</td>
             <td>{{ task.content }}</td>
-            <td v-if="task.status">完了</td>
-            <td v-else>作業中</td>
+            <td v-if="task.status">
+              <button class="task-table-button" @click="updateTask(task.id, task.status)">
+                完了
+              </button>
+            </td>
+            <td v-else>
+              <button class="task-table-button" @click="updateTask(task.id, task.status)">
+                作業中
+              </button>
+            </td>
             <td>
-              <button @click="deleteTask(task.id)">削除</button>
+              <button class="task-table-button" @click="deleteTask(task.id)">削除</button>
             </td>
           </tr>
         </tbody>
@@ -49,17 +57,24 @@ export default {
   },
   methods: {
     async addTask() {
+      window.location.href = 'http://localhost:3000';
       await this.$axios.$post('/api/tasks/store', {
         content: this.content,
         status: false,
       });
-      window.location.href = 'http://localhost:3000';
     },
     async deleteTask(id) {
+      window.location.href = 'http://localhost:3000';
       await this.$axios.$post('/api/tasks/delete', {
         id,
       });
+    },
+    async updateTask(id, status) {
       window.location.href = 'http://localhost:3000';
+      await this.$axios.$post('/api/tasks/update', {
+        id,
+        status,
+      });
     },
   },
 };
@@ -119,6 +134,7 @@ export default {
       }
     }
     &-button {
+      cursor: pointer;
       display: inline-block;
       padding: 0.4em 1.6em;
       font-size: 0.8rem;
@@ -156,6 +172,19 @@ export default {
       padding: 5px;
       border-top: 1px solid #ccc;
       border-right: 1px solid #ccc;
+    }
+
+    &-button {
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      color: #fff;
+      text-decoration: none;
+      background: #00b5ad;
+      border: 1px #00b5ad solid;
+      border-radius: 3px;
     }
   }
 }

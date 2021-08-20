@@ -22,6 +22,12 @@ const taskController = {
       where: { id: id },
     });
   },
+
+  async update(req, res) {
+    const id = req.body.id;
+    const status = req.body.status;
+    await db.Task.update({ status: !status }, { where: { id: id } });
+  },
 };
 
 module.exports = taskController;
