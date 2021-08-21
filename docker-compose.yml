@@ -38,7 +38,7 @@ services:
     volumes:
       - $BACKEND_DIR:$BACKEND_WORK_DIR
     working_dir: $BACKEND_WORK_DIR
-    command: npm start
+    command: [sh, -c, npm install && npm start]
     networks:
       - container-link
 
