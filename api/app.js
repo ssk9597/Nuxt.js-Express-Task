@@ -10,6 +10,10 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+// bodyParser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // routing_file
 const indexRouter = require('./routes/index');
 
@@ -17,6 +21,4 @@ const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
 // start_the_server
-app.listen(PORT, function () {
-  console.log(`http://localhost:${PORT}`);
-});
+app.listen(PORT);
