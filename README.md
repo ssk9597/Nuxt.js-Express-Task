@@ -22,18 +22,15 @@ git clone git@github.com:ssk9597/Docker-Nuxtjs-Express.git
 cd Docker-Nuxtjs-Express
 ```
 
-### ③`api`ディレクトリの必要なパッケージをインストールする
-
-```
-cd api
-npm install cors dotenv express mysql2 sequelize sequelize-cli
-npm i -D nodemon
-```
-
-### ④Nuxt.js の作成と Docker の起動を行う
+### ③Nuxt.js の作成と Docker の起動を行う
 
 ```
 make nuxt
 ```
 
-### ⑤`nuxt.config.js`と`.env`と`pages/index.vue`を修正してバックエンドとの通信を図る
+### ④`frontend/.env`に以下を追記する
+
+```
+API_URL = "http://app:18080"
+API_URL_BROWSER = "http://localhost:18080"
+```
